@@ -1,21 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 export default function Header() {
+  const [zoom, setZoom] = useState(false)
+
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === 'Escape') setZoom(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
   const handleDownload = async (e) => {
     e.preventDefault()
     try {
-      // try HEAD first to avoid downloading the file twice
-      const res = await fetch('/resume.pdf', { method: 'HEAD' })
-      if (res.ok) {
-        const win = window.open('/resume.pdf', '_blank')
-        if (!win) alert('The PDF opened in a new tab — your browser may have blocked popups.')
-      } else {
-        alert('Resume file not found. Please add `resume.pdf` to the project `public/` folder.')
+      const res = await fetch('/resume.pdf')
+      if (!res.ok) {
+        alert('Resume not found. Please add `resume.pdf` to the project `public/` folder.')
+        return
       }
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      // suggest a filename
+      a.download = 'Abemelek_Negusu_Resume.pdf'
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
     } catch (err) {
-      console.error('Error fetching resume:', err)
-      alert('Could not fetch resume. Make sure `public/resume.pdf` exists and the dev server is running.')
+      console.error('Error downloading resume:', err)
+      alert('Could not download resume. Ensure `public/resume.pdf` exists and the dev server is running.')
     }
   }
 
@@ -24,7 +41,10 @@ export default function Header() {
       <div className="profile">
         <motion.div className="avatar-wrapper" whileHover={{scale:1.03}} transition={{type:'spring', stiffness:200}}>
           {/* Place your photo at public/avatar.jpg */}
-          <img src="/avatar.jpg" alt="Abemelek Negusu Lemma" className="avatar" />
+            <motion.picture whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 260 }}>
+              <source srcSet="/avatar.webp" type="image/webp" />
+              <img src="/avatar.jpg" alt="Abemelek Negusu Lemma" className="avatar" onClick={() => setZoom(true)} style={{cursor:'zoom-in'}}/>
+            </motion.picture>
         </motion.div>
         <div className="meta">
           <h1>Abemelek Negusu Lemma</h1>
@@ -36,6 +56,18 @@ export default function Header() {
           </div>
         </div>
       </div>
+      {/* Zoom lightbox */}
+      {zoom && (
+        <motion.div className="lightbox" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onClick={() => setZoom(false)}>
+          <motion.div className="lightbox-inner" initial={{scale:0.9}} animate={{scale:1}} transition={{type:'spring',stiffness:200}} onClick={(e)=>e.stopPropagation()}>
+            <picture>
+              <source srcSet="/avatar.webp" type="image/webp" />
+              <img src="/avatar.jpg" alt="Abemelek — zoom" className="lightbox-img" />
+            </picture>
+            <button className="lightbox-close" onClick={() => setZoom(false)}>Close</button>
+          </motion.div>
+        </motion.div>
+      )}
     </motion.header>
   )
 }
