@@ -6,11 +6,9 @@ import { motion } from 'framer-motion'
 const projects = [
   {
     title: 'CPU Online Course',
-    description: 'An online computer science course platform built for my college. Contains course materials, video lectures, and quizzes to help students learn core CS topics.',
-    tech: 'React, Node.js, PostgreSQL',
-    // updated repo path provided by you
-    repo: 'https://github.com/Abemelek2/cpu_online_courses',
-    fallback: 'https://github.com/Abemelek2'
+    description: 'College online course platform for computer science students.',
+    link: 'https://github.com/Abemelekgit/cpu_online_course',
+    tags: ['React', 'Node', 'Tailwind']
   }
 ]
 
@@ -32,11 +30,9 @@ export default function Projects(){
           <motion.article key={p.title} className="project" variants={item} whileHover={{scale:1.02}} transition={{duration:0.18}}>
             <h3>{p.title}</h3>
             <p className="muted">{p.description}</p>
-            <p className="muted"><strong>Tech:</strong> {p.tech}</p>
+            <p className="muted"><strong>Tech:</strong> {p.tags}</p>
             <p>
-              <a className="btn ghost" href={p.repo} target="_blank" rel="noreferrer">View on GitHub</a>
-              {/* fallback link to profile */}
-              <a className="btn" href={p.fallback} target="_blank" rel="noreferrer" style={{marginLeft:8}}>Profile</a>
+              <a className="btn ghost" href={p.link} target="_blank" rel="noreferrer">View on GitHub</a>
             </p>
           </motion.article>
         ))}
