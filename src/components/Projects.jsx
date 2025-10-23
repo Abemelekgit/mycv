@@ -8,7 +8,15 @@ const projects = [
     title: 'CPU Online Course',
     description: 'College online course platform for computer science students.',
     link: 'https://github.com/Abemelekgit/cpu_online_course',
-    tags: ['React', 'Node', 'Tailwind']
+    tags: ['React', 'Node', 'Tailwind'],
+    youtubeId: 'w9B8RG3K770'
+  },
+  {
+    title: 'Blood Donation Management System',
+    description: 'Full-stack web application for hospitals to register patients, manage donations, and view blood inventory.',
+    link: 'https://github.com/Abemelekgit/blood-donation-system',
+    tags: ['React', 'Node', 'PostgreSQL'],
+    youtubeId: 'VrXAHGZcldQ'
   }
 ]
 
@@ -34,9 +42,29 @@ export default function Projects(){
             <p>
               <a className="btn ghost" href={p.link} target="_blank" rel="noreferrer">View on GitHub</a>
             </p>
+            {p.youtubeId && (
+              <>
+                <div style={{position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', marginTop: '1em', borderRadius: 8}}>
+                  <iframe
+                    title={`${p.title} Demo`}
+                    src={`https://www.youtube.com/embed/${p.youtubeId}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    style={{position: 'absolute', top:0, left:0, width:'100%', height:'100%'}}
+                  />
+                </div>
+                <p className="muted" style={{marginTop: '0.5em'}}>{p.title}</p>
+              </>
+            )}
           </motion.article>
         ))}
       </motion.div>
+      <p>
+        <a className="btn" href="https://github.com/Abemelekgit?tab=repositories" target="_blank" rel="noreferrer">
+          See all repositories on GitHub
+        </a>
+      </p>
       <p className="muted">More projects are in progress — upload their details or repo links and they'll appear here.</p>
     </section>
   )

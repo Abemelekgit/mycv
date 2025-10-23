@@ -3,6 +3,7 @@ import React from 'react'
 const skills = [
   {name: 'JavaScript', level: 'Advanced'},
   {name: 'React', level: 'Advanced'},
+  {name: 'Node.js', level: 'Advanced'},
   {name: 'Next.js', level: 'Intermediate'},
   {name: 'Tailwind CSS', level: 'Intermediate'},
   {name: 'PostgreSQL', level: 'Intermediate'},

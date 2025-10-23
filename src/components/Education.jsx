@@ -9,14 +9,14 @@ export default function Education(){
           <div className="time">Engineering — Completed</div>
           <div className="body">
             <h3>Engineering Degree</h3>
-            <p className="muted">Institution name — Year</p>
+            <p className="muted">Addis Ababa Science and Technology University</p>
           </div>
         </li>
         <li>
           <div className="time">Computer Science — In Progress</div>
           <div className="body">
             <h3>BSc Computer Science</h3>
-            <p className="muted">Expected: Mid-February 2026</p>
+            <p className="muted">CPU College — Expected: Mid-February 2026</p>
           </div>
         </li>
       </ul>

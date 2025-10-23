@@ -40,8 +40,7 @@ npm run dev
 After you provide the photo and the answers above, I will:
 - Update the site content with your real data.
 - Improve the layout for mobile and accessibility tweaks.
-- Optionally add a print stylesheet to export a polished one-page PDF CV.
-
+- Optionally add a print stylesheet to export a polished one-page PDF CV. 
 If you want, I can also:
 - Add Tailwind for faster styling, or a CMS connection to edit content.
 - Deploy to Vercel/Netlify and set up a custom domain.

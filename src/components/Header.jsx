@@ -47,7 +47,9 @@ export default function Header() {
             </motion.picture>
         </motion.div>
         <div className="meta">
-          <h1>Abemelek Negusu Lemma</h1>
+          <h1>
+            Abemelek Negusu Lemma <span className="muted" aria-label="age">• 22 years old</span>
+          </h1>
           <p className="subtitle">Full-Stack Developer — Targeting Frontend (React) roles • BSc Computer Science (expected Feb 2026) • Engineering Graduate</p>
           <div className="ctas print-hide">
             <a className="btn" href="/resume.pdf" onClick={handleDownload}>Download Resume</a>
