@@ -22,7 +22,7 @@ What I need from you to finish and personalize the CV:
 
    - Email: abemelek.negusu@aastustudent.edu.et and abemeleksmail@gmail.com
    - LinkedIn: https://www.linkedin.com/in/abemelek-lemma-a921a1245/
-   - GitHub: https://github.com/Abemelek2
+   - GitHub: https://github.com/Abemelekgit
    - Phone: +251 951 106 508
    - Location: Addis Ababa, Ethiopia
 

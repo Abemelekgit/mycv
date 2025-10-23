@@ -7,14 +7,14 @@ const projects = [
   {
     title: 'CPU Online Course',
     description: 'College online course platform for computer science students.',
-    link: 'https://github.com/Abemelekgit/cpu_online_course',
+  link: 'https://github.com/Abemelekgit/cpu_online_course',
     tags: ['React', 'Node', 'Tailwind'],
     youtubeId: 'w9B8RG3K770'
   },
   {
     title: 'Blood Donation Management System',
     description: 'Full-stack web application for hospitals to register patients, manage donations, and view blood inventory.',
-    link: 'https://github.com/Abemelekgit/blood-donation-system',
+  link: 'https://github.com/Abemelekgit/blood-donation-system',
     tags: ['React', 'Node', 'PostgreSQL'],
     youtubeId: 'VrXAHGZcldQ'
   }
