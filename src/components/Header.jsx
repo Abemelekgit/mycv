@@ -14,26 +14,69 @@ export default function Header() {
 
   const handleDownload = async (e) => {
     e.preventDefault()
-    try {
-      const res = await fetch('/resume.pdf')
-      if (!res.ok) {
-        alert('Resume not found. Please add `resume.pdf` to the project `public/` folder.')
-        return
-      }
-      const blob = await res.blob()
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      // suggest a filename
-      a.download = 'Abemelek_Negusu_Resume.pdf'
-      document.body.appendChild(a)
-      a.click()
-      a.remove()
-      URL.revokeObjectURL(url)
-    } catch (err) {
-      console.error('Error downloading resume:', err)
-      alert('Could not download resume. Ensure `public/resume.pdf` exists and the dev server is running.')
+    // Fallback: open a printable resume window so the user can Save as PDF from the print dialog.
+    const resumeHtml = `
+      <html>
+        <head>
+          <title>Abemelek Negusu Lemma — Resume</title>
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <style>
+            body{font-family:Inter, Arial, sans-serif;color:#111;padding:24px}
+            h1{margin:0 0 6px 0}
+            p.muted{color:#555}
+            .section{margin-top:18px}
+            ul{margin:6px 0 0 18px}
+          </style>
+        </head>
+        <body>
+          <div style="display:flex;gap:16px;align-items:center">
+            <img src="/avatar.jpg" alt="Abemelek" style="width:110px;height:110px;border-radius:999px;object-fit:cover;border:1px solid #ddd" />
+            <div>
+              <h1>Abemelek Negusu Lemma</h1>
+              <p class="muted">22 years old • Email: abemelek.negusu@aastustudent.edu.et • Phone: +251 951 106 508 • Addis Ababa, Ethiopia</p>
+            </div>
+          </div>
+          <div class="section">
+            <h2>Profile</h2>
+            <p>Lifelong tech enthusiast finishing a BSc in Computer Science (expected Feb 2026). Passionate about building polished, user-focused frontend experiences and reliable full-stack systems. Strong fundamentals in data structures and algorithms, collaborative team player, and experience delivering customer-focused solutions. Actively seeking remote opportunities and open to remote or hybrid roles where I can contribute to distributed teams.</p>
+          </div>
+          <div class="section">
+            <h2>Experience</h2>
+            <p><strong>IT Consultant (Intern)</strong> — Addis Ababa Land Holding Registration and Information Agency (2 months)</p>
+            <ul>
+              <li>Assisted with IT tasks and contributed to internal tools and process improvements.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h2>Projects</h2>
+            <p><strong>CPU Online Course</strong> — College online course platform (React, Node, Tailwind)</p>
+            <p><strong>Blood Donation Management System</strong> — Full-stack hospital system (React, Node, PostgreSQL)</p>
+          </div>
+          <div class="section">
+            <h2>Education</h2>
+            <p>Engineering Degree — Addis Ababa Science and Technology University</p>
+            <p>BSc Computer Science (in progress) — CPU College (Expected: Mid-February 2026)</p>
+          </div>
+          <div class="section">
+            <h2>Skills</h2>
+            <p>JavaScript, React, Next.js, Node.js, Tailwind CSS, PostgreSQL, HTML/CSS, Git</p>
+          </div>
+          <script>
+            // Auto-open print dialog so user can save as PDF
+            window.onload = function(){ setTimeout(()=>{ window.print() }, 300) }
+          </script>
+        </body>
+      </html>
+    `
+
+    const w = window.open('', '_blank')
+    if (!w) {
+      alert('Please allow popups to download the resume (the site opens a new window to print/save as PDF).')
+      return
     }
+    w.document.open()
+    w.document.write(resumeHtml)
+    w.document.close()
   }
 
   return (

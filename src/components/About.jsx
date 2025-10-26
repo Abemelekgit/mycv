@@ -11,7 +11,7 @@ export default function About(){
         I am targeting frontend engineering roles where I can apply React, Next.js, and modern UI tooling to build performant and accessible applications. I bring curiosity, strong fundamentals in data structures and algorithms, and a dedication to writing maintainable code. I believe teamwork is essential for success in any project, and I thrive in collaborative environments where ideas are shared and everyone contributes to achieving the best results.
       </p>
       <p>
-        I’m especially interested in contributing at Diligence Technologies in Addis Ababa. Your focus as a leading ICT solutions provider in Ethiopia—pairing a customer‑centric approach with innovation for enterprise clients—aligns with my strengths in building reliable, secure, and scalable web applications. I value teamwork, clear communication, and delivering user‑focused solutions that make a measurable difference.
+        I’m interested in contributing to organizations that focus on customer‑centric ICT solutions and enterprise‑grade systems. This aligns with my strengths in building reliable, secure, and scalable web applications. I value teamwork, clear communication, and delivering user‑focused solutions that make a measurable difference.
       </p>
     </section>
   )
