@@ -12,6 +12,10 @@ export default function Header() {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
+  // Vite serves files in `public/` from the base URL. Use BASE_URL so the image
+  // resolves correctly when the site is deployed under a subpath.
+  const baseUrl = (import.meta && import.meta.env && import.meta.env.BASE_URL) ? import.meta.env.BASE_URL : '/'
+
   const handleDownload = async (e) => {
     e.preventDefault()
     // Fallback: open a printable resume window so the user can Save as PDF from the print dialog.
@@ -30,7 +34,7 @@ export default function Header() {
         </head>
         <body>
           <div style="display:flex;gap:16px;align-items:center">
-            <img src="/avatar.jpg" alt="Abemelek" style="width:110px;height:110px;border-radius:999px;object-fit:cover;border:1px solid #ddd" />
+            <img src="${baseUrl}avatar.jpg" alt="Abemelek" style="width:110px;height:110px;border-radius:999px;object-fit:cover;border:1px solid #ddd" />
             <div>
               <h1>Abemelek Negusu Lemma</h1>
               <p class="muted">22 years old • Email: abemelek.negusu@aastustudent.edu.et • Phone: +251 951 106 508 • Addis Ababa, Ethiopia</p>
@@ -85,8 +89,8 @@ export default function Header() {
         <motion.div className="avatar-wrapper" whileHover={{scale:1.03}} transition={{type:'spring', stiffness:200}}>
           {/* Place your photo at public/avatar.jpg */}
             <motion.picture whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 260 }}>
-              <source srcSet="/avatar.webp" type="image/webp" />
-              <img src="/avatar.jpg" alt="Abemelek Negusu Lemma" className="avatar" onClick={() => setZoom(true)} style={{cursor:'zoom-in'}}/>
+              <source srcSet={`${baseUrl}avatar.webp`} type="image/webp" />
+              <img src={`${baseUrl}avatar.jpg`} alt="Abemelek Negusu Lemma" className="avatar" onClick={() => setZoom(true)} style={{cursor:'zoom-in'}}/>
             </motion.picture>
         </motion.div>
         <div className="meta">
@@ -105,9 +109,9 @@ export default function Header() {
       {zoom && (
         <motion.div className="lightbox" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onClick={() => setZoom(false)}>
           <motion.div className="lightbox-inner" initial={{scale:0.9}} animate={{scale:1}} transition={{type:'spring',stiffness:200}} onClick={(e)=>e.stopPropagation()}>
-            <picture>
-              <source srcSet="/avatar.webp" type="image/webp" />
-              <img src="/avatar.jpg" alt="Abemelek — zoom" className="lightbox-img" />
+              <picture>
+              <source srcSet={`${baseUrl}avatar.webp`} type="image/webp" />
+              <img src={`${baseUrl}avatar.jpg`} alt="Abemelek — zoom" className="lightbox-img" />
             </picture>
             <button className="lightbox-close" onClick={() => setZoom(false)}>Close</button>
           </motion.div>
