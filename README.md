@@ -47,3 +47,4 @@ If you want, I can also:
 
 Reply with your photo (upload it here) and the answers to the questions above and I’ll finish the page content and polish visuals.
 - Contribution 1: minor site polish (2025-12-01)
+- Contribution 2: minor site polish (2025-12-01)
