@@ -53,3 +53,4 @@ Reply with your photo (upload it here) and the answers to the questions above an
 - Contribution 5: minor site polish (2025-12-01)
 - Contribution 6: minor site polish (2025-12-01)
 - Contribution 7: minor site polish (2025-12-01)
+- Contribution 8: minor site polish (2025-12-01)
